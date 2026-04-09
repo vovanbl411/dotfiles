@@ -1,0 +1,15 @@
+workspace "main" {
+    open-on-output "DP-1"
+}
+
+workspace "left" {
+    open-on-output "HDMI-A-1"
+}
+
+workspace "bottom" {
+    open-on-output "DP-3"
+}
+
+workspace "notebook" {
+    open-on-output "eDP-1"
+}

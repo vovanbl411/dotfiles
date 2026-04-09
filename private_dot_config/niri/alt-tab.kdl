@@ -1,0 +1,31 @@
+// ============================================
+// Alt-Tab Window Switcher Configuration
+// ============================================
+
+recent-windows {
+    // Visual appearance
+    highlight {
+        corner-radius 12
+        // Дополнительные опции:
+        // active-color "#7fc8ff"    // Цвет активного окна
+        // urgent-color "#505050"    // Цвет неактивных
+        // padding 30               //отступы подсветки вокруг окна предварительного просмотра
+    }
+
+    // Window dimensions and layout
+    // max-height 1080           // Максимальный размер окна switcher'а
+    // max-scale 0.75
+    // Можно поменять на выод приложенй с одного дисплея scope="output" или использоваить "app-id"
+    binds {
+        Alt+Tab         { next-window scope="all"; }
+        Alt+Shift+Tab   { previous-window scope="all"; }
+        Alt+grave       { next-window scope="output"; }
+        Alt+Shift+grave { previous-window scope="output"; }
+
+        // Дополнительные хоткеи:
+        // Escape          { cancel; }
+        // q               { cancel; }
+        // Return          { confirm; }
+        // space           { confirm; }
+    }
+}

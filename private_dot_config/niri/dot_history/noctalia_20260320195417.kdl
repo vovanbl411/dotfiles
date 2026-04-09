@@ -1,0 +1,55 @@
+layout {
+    // ==========================================
+    // Ayu Dark Color Scheme
+    // ==========================================
+    
+    // Window focus indicator (рамка вокруг активного окна)
+    focus-ring {
+        on
+        active-color   "#e6b450"  // Ayu Gold
+        inactive-color "#0b0e14"  // Ayu Dark BG
+        urgent-color   "#d95757"  // Ayu Red
+        width 3
+    }
+
+    // Window border (отключен — используем focus-ring)
+    border {
+        off
+        // Если включить:
+        // on
+        // width 2
+        active-color   "#e6b450"
+        inactive-color "#0b0e14"
+        urgent-color   "#d95757"
+    }
+
+    // Window shadows
+    shadow {
+        on
+        color "#00000070"
+        softness 30
+        spread 5
+        offset x=0 y=5
+    }
+
+    // Tab indicator (для Mod+W — табbed режим)
+    tab-indicator {
+        position "top"            // или "bottom", "left", "right"
+        active-color   "#e6b450"
+        inactive-color "#7d5507"  // Тёмно-золотой
+        urgent-color   "#d95757"
+    }
+
+    // Insert hint (подсказка при drag-and-drop)
+    insert-hint {
+        color "#e6b45080"         // 50% прозрачность
+    }
+    
+    // ==========================================
+    // Essential Layout Settings (добавьте если нужно)
+    // ==========================================
+    
+    // gaps 10
+    // center-focused-column "never"
+    // default-column-width { proportion 0.5; }
+}

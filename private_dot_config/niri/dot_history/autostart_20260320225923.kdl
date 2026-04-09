@@ -1,0 +1,26 @@
+// ────────────── Startup application ──────────────
+// spawn-at-startup "/usr/libexec/flatpak-portal &"
+
+
+spawn-sh-at-startup "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=niri"
+// spawn-sh-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &"
+
+spawn-sh-at-startup "sleep 2 && qs -c noctalia-shell"  
+
+// Run on left monitor
+//spawn-sh-at-startup "sleep 7 && ~/.config/niri/scripts/leftmon-split-btop-nvtop.sh"
+//spawn-sh-at-startup "sleep 10 && ~/.config/niri/scripts/leftmon-move-workspace-keepass.sh"
+
+// Bottom monitor
+// spawn-sh-at-startup "sleep 3 && taskset -c 8-15 flatpak run dev.vencord.Vesktop"
+// spawn-sh-at-startup "sleep 4 && taskset -c 8-15 flatpak run org.telegram.desktop"
+//spawn-sh-at-startup "sleep 3 && flatpak run dev.vencord.Vesktop"
+//spawn-sh-at-startup "sleep 4 && flatpak run org.telegram.desktop"
+
+
+// Notebook monitor
+// spawn-sh-at-startup "sleep 5 && taskset -c 8-15 flatpak run com.spotify.Client"
+spawn-sh-at-startup "sleep 8 && flatpak run com.spotify.Client"
+
+//Main monitor
+spawn-sh-at-startup "sleep 5 && firefox"

@@ -1,0 +1,53 @@
+// ============================================
+// Global Blur Configuration
+// ============================================
+
+blur {
+    // Quality settings
+    passes 2          // 1-3, больше = качественнее но дороже
+    offset 2          // Радиус размытия
+    noise 0.02        // Шум для текстуры (0.0 - 0.1)
+    saturation 1.5    // Насыщенность размытого фона
+}
+
+// ============================================
+// Window Rules: Selective Blur
+// ============================================
+
+// Базовое правило: blur для большинства окон
+window-rule {
+    // Исключаем категории
+    exclude app-id="^gamescope.*"
+    exclude app-id="^steam_app_.*"
+    exclude app-id="^mpv$"
+    exclude app-id="^obs.*"
+    exclude title=".*YouTube.*"  // Browser fullscreen video
+
+    background-effect {
+        blur true
+        xray false
+    }
+}
+
+// ============================================
+// Explicit exceptions (документация)
+// ============================================
+
+// Полный disable для игр и fullscreen video
+window-rule {
+    match app-id="^gamescope.*"
+    match app-id="^steam_app_.*"
+    match app-id="^mpv$"
+
+    background-effect {
+        blur false
+    }
+}
+
+// Для терминалов с собственной прозрачностью — optional
+window-rule {
+    match app-id="^(kitty|alacritty|wezterm)$"
+    background-effect {
+        blur false
+    }
+}

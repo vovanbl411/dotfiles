@@ -1,0 +1,105 @@
+// Include Files
+include "./alttab.kdl"
+include "./blur.kdl"
+include "./noctalia.kdl"
+include "./monitors.kdl"
+include "./hotkey.kdl"
+include "./environment.kdl"
+include "./input.kdl"
+include "./layout.kdl"
+include "./window-rule.kdl"
+include "./workspaces.kdl"
+
+config-notification {
+    disable-failed
+}
+
+gestures {
+    hot-corners {
+    }
+}
+
+layer-rule {
+    // This is for swaybg; change for other wallpaper tools.
+    // Find the right namespace by running niri msg layers.
+    match namespace="^noctalia-overview-*"
+    place-within-backdrop true
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+animations {
+    workspace-switch {
+        spring damping-ratio=0.80 stiffness=523 epsilon=0.0001
+    }
+    window-open {
+        duration-ms 150
+        curve "ease-out-expo"
+    }
+    window-close {
+        duration-ms 150
+        curve "ease-out-quad"
+    }
+    horizontal-view-movement {
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+    }
+    window-movement {
+        spring damping-ratio=0.75 stiffness=323 epsilon=0.0001
+    }
+    window-resize {
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+    }
+    config-notification-open-close {
+        spring damping-ratio=0.65 stiffness=923 epsilon=0.001
+    }
+    screenshot-ui-open {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+    overview-open-close {
+        spring damping-ratio=0.85 stiffness=800 epsilon=0.0001
+    }
+}
+
+debug {
+    honor-xdg-activation-with-invalid-serial
+}
+
+// Override to disable super+tab
+recent-windows {
+    binds {
+        Alt+Tab         { next-window scope="output"; }
+        Alt+Shift+Tab   { previous-window scope="output"; }
+        Alt+grave       { next-window filter="app-id"; }
+        Alt+Shift+grave { previous-window filter="app-id"; }
+    }
+}
+
+cursor {
+    xcursor-theme "Adwaita"
+    xcursor-size 24
+    hide-after-inactive-ms 5000
+}
+
+// ────────────── Startup application ──────────────
+    // spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &" // Polkit
+    // spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+    // spawn-at-startup "qs" "-c" "noctalia-shell" // noctalia-shell
+    // spawn-at-startup "xwayland-satellite" // for x11 app
+    // spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+    // spawn-at-startup "wl-paste" "--primary" "--watch" "cliphist" "store"
+    // spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
+    // spawn-at-startup "/usr/libexec/flatpak-portal &"
+
+    //fix for obs
+    //spawn-at-startup "sh" "-c" "sleep 8 && systemctl --user restart xdg-desktop-portal xdg-desktop-portal-wlr"
+
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+spawn-at-startup "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=niri"    
+spawn-at-startup "qs" "-c" "noctalia-shell"

@@ -1,0 +1,31 @@
+// ────────────── Startup application ──────────────
+    // spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &" // Polkit
+    // spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+    // spawn-at-startup "qs" "-c" "noctalia-shell" // noctalia-shell
+    // spawn-at-startup "xwayland-satellite" // for x11 app
+    // spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+    // spawn-at-startup "wl-paste" "--primary" "--watch" "cliphist" "store"
+    // spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
+    // spawn-at-startup "/usr/libexec/flatpak-portal &"
+
+    //fix for obs
+    //spawn-at-startup "sh" "-c" "sleep 8 && systemctl --user restart xdg-desktop-portal xdg-desktop-portal-wlr"
+
+spawn-at-startup "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=niri"
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+  
+spawn-at-startup "qs" "-c" "noctalia-shell"
+
+// Run on left monitor
+spawn-sh-at-startup "sleep 6 && ~/.config/niri/scripts/leftmon-split-btop-nvtop.sh"
+spawn-sh-at-startup "sleep 9 && flatpak run org.keepassxc.KeePassXC"
+
+// Bottom monitor
+spawn-sh-at-startup "sleep 3 && taskset -c 8-15 flatpak run dev.vencord.Vesktop"
+spawn-sh-at-startup "sleep 4 && taskset -c 8-15 flatpak run org.telegram.desktop"
+
+// Notebook monitor
+spawn-sh-at-startup "sleep 5 && taskset -c 8-15 flatpak run com.spotify.Client"
+
+//Main monitor
+spawn-sh-at-startup "sleep 2 && firefox"

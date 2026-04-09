@@ -1,0 +1,44 @@
+// --- MAIN (DP-1) ---
+window-rule {
+    match at-startup=true app-id=r#"^firefox-esr$"#
+   open-on-output "DP-1"
+    open-maximized true
+}
+
+// --- LEFT (HDMI-A-1) ---
+// Используем кастомные классы для kitty, чтобы отличить btop от nvtop
+window-rule {
+    match app-id="btop-sys"
+    open-maximized true
+    //default-window-height { proportion 0.5; }
+    open-on-output "HDMI-A-1"
+}
+window-rule {
+    match app-id="nvtop-sys"
+    open-maximized true
+    //default-window-height { proportion 0.5; }
+    open-on-output "HDMI-A-1"
+}
+window-rule {
+    match app-id=r#"(?i)keepassxc"#
+    open-maximized true
+    open-on-output "HDMI-A-1"
+    block-out-from "screencast"
+}
+
+// --- BOTTOM (DP-3) ---
+window-rule {
+    match app-id=r#"^vesktop$"#
+    open-on-output "DP-3"
+}
+window-rule {
+    match app-id=r#"^org\.telegram\.desktop$"#
+    open-on-output "DP-3"
+}
+
+// --- NOTEBOOK (eDP-1) ---
+window-rule {
+    match app-id=r#"^spotify$"#
+    open-on-output "eDP-1"
+}
+
