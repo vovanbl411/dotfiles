@@ -1,0 +1,37 @@
+@import url("noctalia.css");
+
+/* Для чистого GTK4 (без libadwaita) */
+window {
+  background-color: @window_bg_color;
+  color: @window_fg_color;
+}
+
+headerbar, .titlebar {
+  background-color: @headerbar_bg_color;
+  color: @headerbar_fg_color;
+}
+
+button {
+  background-color: @card_bg_color;
+  color: @card_fg_color;
+}
+
+button:checked, button:active {
+  background-color: @accent_bg_color;
+  color: @accent_fg_color;
+}
+
+/* Для scale/slider (ползунки громкости в pavucontrol) */
+scale trough {
+  background-color: @card_bg_color;
+}
+
+scale highlight {
+  background-color: @accent_bg_color;
+}
+
+scale slider {
+  background-color: @accent_bg_color;
+}
+
+
